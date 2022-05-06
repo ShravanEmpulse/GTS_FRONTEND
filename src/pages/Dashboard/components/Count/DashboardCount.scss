@@ -1,0 +1,42 @@
+@import '../../../../styles/app';
+
+/* DashBoard Count */
+
+.truck {
+    height: 4rem;
+    margin: 7px 0;
+}
+
+.delay-truck-div {
+    display: inline-flex;
+}
+
+.delayCount {
+    display: inline-block;
+    margin: auto 0;
+    margin-left: 10px;
+}
+
+.count-hr {
+    padding: 0;
+    margin: 0 0 10px 0;
+    background-color: $gold;
+}
+
+.delayDetail {
+    margin: auto 0;
+    margin-left: 2.8rem;
+    margin-top: 2.5rem;
+    display: inline-block;
+    .badge {
+        margin-left: 1px;
+    }
+}
+
+.outline-badge-light {
+    color: #f8f9fa;
+    font-weight: 500 !important;
+    border: 1px solid transparent;
+    border-color: #f8f9fa;
+    background-color: rgba(0, 0, 0, 0);
+}

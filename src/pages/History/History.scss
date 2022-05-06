@@ -1,0 +1,45 @@
+@import '../../styles/app';
+.dynamic-tables {
+    #vueWayTable {
+        th {
+            font-size: $font-size-sm;
+            &:after {
+                color: $gray-200;
+            }
+        }
+        .btn-default {
+            background: none;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.historyTableClass {
+    th {
+        color: white;
+    }
+    td:nth-child(4),
+    td:nth-child(6) {
+        text-align: center;
+    }
+}
+
+.export-button {
+    margin: 8px 15px;
+}
+
+
+/* daterangepicker */
+
+.daterangepicker .available {
+    color: #000;
+}
+
+.daterangepicker .table-condensed {
+    color: #000;
+}
+
+.drp-selected {
+    color: #000;
+}

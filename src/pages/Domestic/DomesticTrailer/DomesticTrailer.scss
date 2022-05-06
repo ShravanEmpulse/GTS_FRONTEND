@@ -1,0 +1,55 @@
+@import '../../../styles/app';
+.dynamic-tables {
+    #vueWayTable {
+        th {
+            font-size: $font-size-sm;
+            &:after {
+                color: $gray-200;
+            }
+        }
+        .btn-default {
+            background: none;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.trailerTableClass {
+    th {
+        color: white;
+    }
+    td:nth-child(4),
+    td:nth-child(6) {
+        text-align: center;
+    }
+    text-align: center;
+}
+
+.trailer-status {
+    width: 100%;
+    pointer-events: none;
+}
+
+.item-count {
+    color: $white;
+}
+
+.export-button {
+    margin-left: 10px;
+}
+
+.invoice table {
+    color: $black;
+    text-align: center;
+    border: 1px $blue;
+}
+
+.invoice table th {
+    background-color: $blue;
+    color: $white;
+}
+
+.company-name {
+    color: $blue;
+}

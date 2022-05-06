@@ -1,0 +1,46 @@
+@import '../../styles/app.scss';
+.root {
+    height: 100%;
+    /*
+    @include media-breakpoint-up('md') {
+        margin-left: $sidebar-width;
+    }*/
+}
+
+.content {
+    position: relative;
+    flex-grow: 1;
+    // 1rem for footer height
+    // padding: $content-padding $content-padding ($content-padding + 1rem);
+    padding: ($content-padding - 2rem) $content-padding ($content-padding - 2.5rem) ($content-padding + 1rem);
+    @media (max-width: breakpoint-max(sm)) {
+        padding: 20px 15px 40px;
+    }
+    // hammers disallows text selection, allowing it for large screens
+    @media (min-width: breakpoint-min(sm)) {
+        user-select: auto !important;
+    }
+}
+
+.contentFooter {
+    position: absolute;
+    bottom: 0px;
+    color: $text-muted;
+    margin-left: 15px;
+    padding: 0 $content-padding;
+    font-size: 1rem;
+    a {
+        color: $white;
+    }
+}
+
+.pageFooter {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-size: $font-size-index;
+    color: $text-muted;
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+@import '../../../styles/app';
+.map-header {
+    margin-bottom: 5px;
+}
+
+.mapContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+}
+
+.mapTitle {
+    position: relative;
+    z-index: 2;
+}
+
+.map-count {
+    margin-bottom: 2px;
+}
+
+.map-total-count {
+    padding: 0.5 10px;
+    i {
+        font-size: 15pt;
+        color: $warning;
+        text-align: left;
+    }
+    margin-right:5px;
+}
+
+.map-transit-count {
+    padding: 0.5 10px;
+    i {
+        font-size: 15pt;
+        color: $info;
+        text-align: left;
+    }
+}
+
+.truckCount {
+    height: 1.4rem;
+}

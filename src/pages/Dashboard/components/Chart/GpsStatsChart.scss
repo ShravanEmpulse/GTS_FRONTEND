@@ -1,0 +1,31 @@
+@import '../../../../styles/app';
+
+/* GPS Status Graph */
+
+.morris-hover-row-label {
+    color: $black;
+}
+
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .status-graph {
+        height: 150px;
+    }
+}
+
+@media (min-width: 1152px) and (max-width: 1152px) {
+    .status-graph {
+        height: 210px;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1280px) {
+    .status-graph {
+        height: 150px;
+    }
+}
+
+@media (min-width: 1360px) and (max-width: 1400px) {
+    .status-graph {
+        height: 160px;
+    }
+}

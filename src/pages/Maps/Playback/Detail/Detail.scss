@@ -1,0 +1,134 @@
+    @import '../../../../styles/app';
+    .theme-helper {
+        width: 350px;
+        position: fixed;
+        right: -350px;
+        //top: $navbar-height * 2;
+        top: 50px;
+        z-index: 100;
+        background: rgba(54, 69, 90, 0.75) !important;
+        @include transition(right $sidebar-transition-time ease-in-out);
+        &.theme-helper-opened {
+            right: 0;
+        }
+        .theme-helper-toggler {
+            width: 55px;
+            margin-left: -55px;
+            cursor: pointer;
+            i {
+                animation-duration: 6500ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+            i:first-of-type {
+                animation-name: spin;
+                margin-right: -$spacer * 1.15;
+                vertical-align: text-bottom;
+            }
+            i:last-of-type {
+                animation-name: spin-reverse;
+                vertical-align: $font-size-sm;
+            }
+        }
+        .theme-helper-spinner {
+            z-index: 200;
+            border-radius: 50% 0 0 50%;
+            padding: $spacer * 0.8 $spacer / 2 $spacer * 0.8 $spacer;
+            font-size: $font-size-lg * 1.4;
+            line-height: initial;
+            box-shadow: $widget-shadow-designated;
+            background: rgba(54, 69, 90, 0.85) !important;
+        }
+        .theme-helper-header {
+            padding-top: 10px;
+            h6 {
+                margin: auto;
+            }
+            h4 {
+                margin: auto;
+                padding: 10px;
+            }
+            h3 {
+                margin: auto;
+            }
+        }
+        .theme-helper-content {
+            box-shadow: $widget-shadow-designated;
+            border-radius: 0;
+        }
+        .theme-sharing,
+        .theme-switcher {
+            font-size: $font-size-lg;
+            cursor: pointer;
+        }
+        .abc-radio-warning input[type="radio"]:not(:checked)+label::before {
+            background-color: theme-color('warning');
+        }
+        .abc-radio-secondary input[type="radio"]:not(:checked)+label::before {
+            background-color: theme-color('secondary');
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes spin-reverse {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(-360deg);
+            }
+        }
+    }
+    
+    .table {
+        color: #000;
+    }
+    
+    .detail_header {
+        text-align: center;
+    }
+    
+    .detail-body {
+        background: $white;
+        color: $black;
+        height: 100%;
+    }
+    
+    .detailList {
+        color: $black;
+    }
+    
+    .list-group .list-group-item {
+        color: $black;
+    }
+    
+    .list-group-item.active {
+        border: 1px solid rgba(0, 0, 0, 0);
+    }
+    
+    .list-group-item {
+        border: 1px solid rgba(0, 0, 0, 0);
+    }
+    
+    .playback-btn {
+        margin: 5px;
+    }
+    
+    .card {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    
+    .no-detail {
+        height: 250px;
+        text-align: center;
+    }
+    
+    .item-detail {
+        height: 200px;
+        overflow: auto;
+    }

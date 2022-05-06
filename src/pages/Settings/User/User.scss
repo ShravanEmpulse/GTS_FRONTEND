@@ -1,0 +1,19 @@
+@import '../../../styles/app';
+.buttons {
+    margin: 8px 15px;
+}
+
+#user .right {
+    float: right;
+}
+
+.userTableClass {
+    th {
+        color: white;
+    }
+    td:nth-child(1),
+    td:nth-child(2),
+    td:nth-child(6) {
+        text-align: center;
+    }
+}
