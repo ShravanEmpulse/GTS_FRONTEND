@@ -125,6 +125,11 @@ export default new Router({
                         }
                     }
                 },
+                {
+                    path: 'maps/routeAnalysis',
+                    name: 'RouteAnalysisPage',
+                    component: RouteAnalysis,
+                },
                 // Trailer
                 {
                     path: 'trailer',
