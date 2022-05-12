@@ -106,7 +106,7 @@ export default {
       loadingLabel: 'Loading...',
       tableData: [],
       status:[],
-      trailerColumns: [ 'plate_no', 'ti_no', 'departure_date', 'eta', 'destination' , 'location', 'status' ],
+      trailerColumns: [ 'plate_no','transporter_name','ti_no', 'departure_date', 'eta', 'destination' , 'location', 'status' ],
       trailerOptions: {
         filterByColumn: true,
         perPage: 10,
@@ -114,7 +114,7 @@ export default {
         pagination: { chunk: 5, dropdown: false },
         orderBy:{ ascending:true},
         skin: 'table table-striped',
-        filterable: ['plate_no', 'ti_no', 'departure_date', 'eta', 'destination', 'location', 'status'],
+        filterable: ['plate_no','transporter_name','ti_no', 'departure_date', 'eta', 'destination', 'location', 'status'],
         texts:{
             filterBy: "Search by...",
             defaultOption: "ALL",
@@ -129,7 +129,7 @@ export default {
             return value[0].title;
           }
         },
-        'TP VENDOR': 'tp_vendor',
+        'Transporter Name': 'transporter_name',
         'PLATE NO': 'plate_no',
         'TI NO': 'ti_no',
         'DEPARTURE DATE': 'departure_date',
@@ -187,7 +187,7 @@ export default {
           if(data[i].destCount==1){
             this.tableData.push({
               status: this.settingStatus(data[i].drivingStatus),
-              tp_vendor: data[i].transporterName,
+              transporter_name: data[i].transporterName,
               plate_no: data[i].plateNo,
               ti_no: data[i].tiNo,
               departure_date: data[i].departureDate,
@@ -200,7 +200,7 @@ export default {
           }else{
             this.tableData.push({
               status: this.settingStatus(data[i].drivingStatus),
-              tp_vendor: data[i].transporterName,
+              transporter_name: data[i].transporterName,
               plate_no: data[i].plateNo,
               ti_no: data[i].tiNo,
               departure_date: data[i].departureDate,
@@ -213,8 +213,7 @@ export default {
           }
         }
       })
-      .catch((ex)=> {
-        console.log(ex);
+      .catch(()=> {
         this.loadingShow = false;
       })
     },
@@ -273,8 +272,7 @@ export default {
           this.itmeNo = "ITEM NO";
         }
       })
-      .catch((ex)=> {
-        console.log(ex);
+      .catch(()=> {
         this.loadingShow = false;
       }) 
     },
