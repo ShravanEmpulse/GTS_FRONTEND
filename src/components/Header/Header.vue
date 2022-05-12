@@ -28,6 +28,24 @@
           </div>
         </div>
 
+        <b-nav-item class="d-md-down-none" @click="navigate('/app/dashboard')">
+          <i class="la la-home px-2" />&nbsp;DASHBOARD
+        </b-nav-item>
+        <b-nav-item class="d-md-down-none" @click="navigate('/app/maps/map')">
+          <i class="la la-globe px-2" />&nbsp;MAPS
+        </b-nav-item>
+         <b-nav-item class="d-md-down-none" @click="navigate('/app/trailer')">
+          <i class="la la-subway px-2" />&nbsp;TRAILER
+        </b-nav-item>
+         <b-nav-item class="d-md-down-none">
+          <i class="la la-train px-2" />&nbsp;TRAIN
+        </b-nav-item>
+        <b-nav-item class="d-md-down-none" @click="navigate('/app/report/deliveryDistance')">
+          <i class="la la-chart-area px-2" />&nbsp;REPORTS
+        </b-nav-item>
+        <b-nav-item class="d-md-down-none" @click="navigate('/app/myAccount')">
+          <i class="la la-cog px-2" />&nbsp;SETTINGS
+        </b-nav-item>
         <b-nav-item class="d-md-down-none" @click="logout">
           <i class="la la-power-off px-2" />&nbsp;LOGOUT
         </b-nav-item>
@@ -84,6 +102,9 @@ export default {
     logout(){
       window.sessionStorage.clear();
       this.$router.push('/login');
+    },
+    navigate(link){
+      this.$router.push(link);
     },
     getMenuList(){
       this.loadingShow = true;
