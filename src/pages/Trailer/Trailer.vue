@@ -106,7 +106,7 @@ export default {
       loadingLabel: 'Loading...',
       tableData: [],
       status:[],
-      trailerColumns: [ 'plate_no','transporter_name','ti_no', 'departure_date', 'eta', 'destination' , 'location', 'status' ],
+      trailerColumns: [ 'plate_no','tp_code','transporter_name','departure_date', 'eta', 'destination' , 'location', 'status' ],
       trailerOptions: {
         filterByColumn: true,
         perPage: 10,
@@ -114,7 +114,7 @@ export default {
         pagination: { chunk: 5, dropdown: false },
         orderBy:{ ascending:true},
         skin: 'table table-striped',
-        filterable: ['plate_no','transporter_name','ti_no', 'departure_date', 'eta', 'destination', 'location', 'status'],
+        filterable: ['plate_no','tp_code','transporter_name','departure_date', 'eta', 'destination', 'location', 'status'],
         texts:{
             filterBy: "Search by...",
             defaultOption: "ALL",
@@ -130,8 +130,9 @@ export default {
           }
         },
         'Transporter Name': 'transporter_name',
+        'TP Code': 'tp_code',
         'PLATE NO': 'plate_no',
-        'TI NO': 'ti_no',
+        // 'TI NO': 'ti_no',
         'DEPARTURE DATE': 'departure_date',
         'DEPARTURE': 'departure',
         'ETA': 'eta', 
@@ -188,8 +189,9 @@ export default {
             this.tableData.push({
               status: this.settingStatus(data[i].drivingStatus),
               transporter_name: data[i].transporterName,
+              tp_code: data[i].tpCode,
               plate_no: data[i].plateNo,
-              ti_no: data[i].tiNo,
+              // ti_no: data[i].tiNo,
               departure_date: data[i].departureDate,
               departure: data[i].departureName,
               eta: data[i].eta,
@@ -201,8 +203,9 @@ export default {
             this.tableData.push({
               status: this.settingStatus(data[i].drivingStatus),
               transporter_name: data[i].transporterName,
+              tp_code: data[i].tpCode,
               plate_no: data[i].plateNo,
-              ti_no: data[i].tiNo,
+              // ti_no: data[i].tiNo,
               departure_date: data[i].departureDate,
               departure: data[i].departureName,
               eta: data[i].eta,
