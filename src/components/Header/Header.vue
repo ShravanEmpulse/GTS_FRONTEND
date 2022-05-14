@@ -37,7 +37,7 @@
          <b-nav-item class="d-md-down-none" @click="navigate('/app/trailer')">
           <i class="la la-subway px-2" />&nbsp;TRAILER
         </b-nav-item>
-         <b-nav-item class="d-md-down-none">
+         <b-nav-item class="d-md-down-none" @click="navigate('/app/train')">
           <i class="la la-train px-2" />&nbsp;TRAIN
         </b-nav-item>
         <b-nav-item class="d-md-down-none" @click="navigate('/app/report/deliveryDistance')">
