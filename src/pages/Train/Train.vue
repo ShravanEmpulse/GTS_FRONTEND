@@ -104,7 +104,17 @@ export default {
       /* LOADING */
       loadingShow: false,
       loadingLabel: 'Loading...',
-      tableData: [],
+      tableData: [{
+              status: this.settingStatus(2),
+              plate_no: '12321321',
+              ti_no: '22223322',
+              departure_date: new Date('2022-10-10'),
+              departure: 'SMD',
+              eta: '2hrs',
+              destination: 'Rajasthan',
+              shippingId: '93783829',
+              location: 'Mangalore'
+      }],
       status:[],
       trainColumns: [ 'plate_no','ti_no','departure_date', 'eta', 'destination' , 'location', 'status' ],
       trainOptions: {
@@ -120,7 +130,14 @@ export default {
             defaultOption: "ALL",
         },
       },
-      invoiceDetail: [],
+      invoiceDetail: [{
+        goodsCode: 'P',
+        destName: 'Rajasthan',
+        dealerName: 'SMD',
+        eta: '2hrs',
+        itemNo: '28392',
+        itemName:'Package',
+      }],
       trainInfo: [],
       excel_fields: {
         'STATUS': {
@@ -150,7 +167,7 @@ export default {
     };
   },
   created() {
-    this.getTrainInfo(); 
+    // this.getTrainInfo(); 
   },
   mounted(){
      if(this.$route.params.status){
@@ -262,7 +279,7 @@ export default {
       .then((response) => {
         this.loadingShow = false;
         this.trainInfo = trainInfo;
-        this.invoiceDetail = response.data.resultBody;
+        // this.invoiceDetail = response.data.resultBody;
 
         if(this.invoiceDetail[0].goodsCode == 'V'){
           this.itmeNo = "VIN";
