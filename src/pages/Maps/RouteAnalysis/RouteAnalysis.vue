@@ -41,12 +41,17 @@
         </b-col>   
         
     </b-row>
-    <b-row>
-    <div>
-        <GmapMap v-bind:style="computedMapSize" style="background-color: white;" :zoom="zoom" :center="center" ref="map">
+    <b-row v-bind:style="computedMapSize">
+     <GmapMap v-bind:style="computedMapSize"  :zoom="zoom" :center="center" ref="map">    
+                <GmapPolyline :path.sync="this.path" :options="{ strokeColor:'#E65442'}" />
+                <GmapMarker v-for="(marker, index) in markers" :key="index" :icon="marker.icon" :position="marker.latLng"
+                 :clickable="true" :title="marker.title" :plateNo="marker.plateNo" :gpsDtm="marker.gpsDtm" 
+                 @click="markerClickEvent(marker,index)" />  
+                <GmapInfoWindow :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">  
+                     <div class="infoContent" v-html="infoContent"></div>
+                </GmapInfoWindow>
         </GmapMap> 
-    </div>
-</b-row>
+    </b-row>
 <b-row class="widget-middle-overflow">
      <div class="export-button">
           <download-excel
@@ -156,6 +161,19 @@ export default {
                 toll_charges: '8500',
                 state_borders_crossed: '8',
             }],
+                  /* EXCEL */
+      excel_fields: {
+        'DESTINATION': 'destination',
+        'TRANSPORTER NAME' : 'transporters_name',
+        'PLATE NO': 'plate_number',
+        'DEPARTURE DATE': 'departure_date',
+        'ARRIVAL DATE': 'arrival_date',
+        'GPS DISTANCE': 'gps_distance',
+        'TRANSIT DAYS': 'transit_days',
+        'NO OF TOLLS': 'no_of_tolls',
+        'TOLL CHARGES': 'toll_charges',
+        'STATE BORDERS CROSSED': 'state_borders_crossed',
+      },
         }
     },
     created() {
