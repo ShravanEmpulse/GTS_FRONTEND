@@ -1,7 +1,7 @@
 <template>
   <div class="dynamic-tables">
     <h4 class="page-title">    
-      <span>Trailer</span>    
+      <span>Train</span>    
     </h4> 
     <Widget
       title="<h4></h4>"
@@ -13,29 +13,29 @@
           <download-excel
             class   = "btn btn-outline-default"
             :data   = "exportData"
-            worksheet = "Trailer"
+            worksheet = "Train"
             type    = "csv"
             :fields ="excel_fields"
-            name    = "Trailer.csv">
+            name    = "Train.csv">
             EXPORT EXCEL
           </download-excel>
         </div>
 
-        <v-client-table class="trailerTableClass" ref="trailerTable" :data="tableData" :columns="trailerColumns" :options="trailerOptions">
-          <b-button slot="status" slot-scope="props" :variant="props.row.status[0].type" class="trailer-status-badge" @click="getTrailerDetail(props.row)" v-b-modal.detail >{{props.row.status[0].title}}</b-button>
+        <v-client-table class="trainTableClass" ref="trainTable" :data="tableData" :columns="trainColumns" :options="trainOptions">
+          <b-button slot="status" slot-scope="props" :variant="props.row.status[0].type" class="train-status-badge" @click="getTrainDetail(props.row)" v-b-modal.detail >{{props.row.status[0].title}}</b-button>
           <a class="item-count" slot="item" slot-scope="props"  >{{props.row.item}}</a>
           <p slot="location" slot-scope="props" >{{getLocation(props.row.location)}}</p>
         </v-client-table>
       </div>
     </Widget>
-    <b-modal id="detail" size="lg" title="Trailer Detail" body-class="bg-white" hide-footer>
-      <div class="trailerDetail">
+    <b-modal id="detail" size="lg" title="Train Detail" body-class="bg-white" hide-footer>
+      <div class="trainDetail">
         <br>
       <header>
           <b-row>
             <b-col md="6" xs="12" class="b-col-print-6">
               <h5>
-              <span class="fw-semi-bold">{{trailerInfo.ti_no}}</span>  
+              <span class="fw-semi-bold">{{trainInfo.ti_no}}</span>  
               </h5>
             </b-col>
           </b-row>
@@ -46,13 +46,13 @@
               <b-col sm='12' class="b-col-print-12">
                 <h5 class="no-margin">Glovis</h5>
                 <h3 class="company-name m-t-1 fw-semi-bold">
-                    {{trailerInfo.departure}}
+                    {{trainInfo.departure}}
                 </h3>
                 <address>
-                    PLATE NO: <strong>{{trailerInfo.plate_no}}</strong><br />
-                    TP VENDOR: <strong>{{trailerInfo.tp_vendor}}</strong><br />
-                    DEPARTURE DATE:<strong> {{trailerInfo.departure_date}}</strong><br />
-                    LOCATION:<strong> {{getLocation(trailerInfo.location)}}</strong><br />
+                    PLATE NO: <strong>{{trainInfo.plate_no}}</strong><br />
+                    TI No: <strong>{{trainInfo.ti_no}}</strong><br />
+                    DEPARTURE DATE:<strong> {{trainInfo.departure_date}}</strong><br />
+                    LOCATION:<strong> {{getLocation(trainInfo.location)}}</strong><br />
                 </address>
             </b-col>
           </b-row>
@@ -97,31 +97,48 @@
 import Widget from '@/components/Widget/Widget';
 
 export default {
-  name: 'Trailer',
+  name: 'Train',
   components: { Widget },
   data() {
     return {
       /* LOADING */
       loadingShow: false,
       loadingLabel: 'Loading...',
-      tableData: [],
+      tableData: [{
+              status: this.settingStatus(2),
+              plate_no: '12321321',
+              ti_no: '22223322',
+              departure_date: new Date('2022-10-10'),
+              departure: 'SMD',
+              eta: '2hrs',
+              destination: 'Rajasthan',
+              shippingId: '93783829',
+              location: 'Mangalore'
+      }],
       status:[],
-      trailerColumns: [ 'plate_no','tp_code','transporter_name','departure_date', 'eta', 'destination' , 'location', 'status' ],
-      trailerOptions: {
+      trainColumns: [ 'plate_no','ti_no','departure_date', 'eta', 'destination' , 'location', 'status' ],
+      trainOptions: {
         filterByColumn: true,
         perPage: 10,
         perPageValues: [],
         pagination: { chunk: 5, dropdown: false },
         orderBy:{ ascending:true},
         skin: 'table table-striped',
-        filterable: ['plate_no','tp_code','transporter_name','departure_date', 'eta', 'destination', 'location', 'status'],
+        filterable: ['plate_no','ti_no','departure_date', 'eta', 'destination', 'location', 'status'],
         texts:{
             filterBy: "Search by...",
             defaultOption: "ALL",
         },
       },
-      invoiceDetail: [],
-      trailerInfo: [],
+      invoiceDetail: [{
+        goodsCode: 'P',
+        destName: 'Rajasthan',
+        dealerName: 'SMD',
+        eta: '2hrs',
+        itemNo: '28392',
+        itemName:'Package',
+      }],
+      trainInfo: [],
       excel_fields: {
         'STATUS': {
           field:'status',
@@ -129,10 +146,8 @@ export default {
             return value[0].title;
           }
         },
-        'Transporter Name': 'transporter_name',
-        'TP Code': 'tp_code',
         'PLATE NO': 'plate_no',
-        // 'TI NO': 'ti_no',
+        'TI NO': 'ti_no',
         'DEPARTURE DATE': 'departure_date',
         'DEPARTURE': 'departure',
         'ETA': 'eta', 
@@ -152,7 +167,7 @@ export default {
     };
   },
   created() {
-    this.getTrailerInfo(); 
+    // this.getTrainInfo(); 
   },
   mounted(){
      if(this.$route.params.status){
@@ -161,8 +176,8 @@ export default {
   },
   computed: {
     exportData(){
-      if(typeof this.$refs.trailerTable !== 'undefined'){
-        return this.$refs.trailerTable.allFilteredData;
+      if(typeof this.$refs.trainTable !== 'undefined'){
+        return this.$refs.trainTable.allFilteredData;
       }else{
         return this.tableData;
       }
@@ -175,10 +190,10 @@ export default {
     parseDateforDepDate(date) {
         return  this.$moment(date,'YYYYMMDDHHmmss').format('DD MMM, YYYY');
     },
-    getTrailerInfo(){
+    getTrainInfo(){
       this.tableData = [];
       this.loadingShow = true;
-      this.$axios.get('/api/trailer/trailerInfo')
+      this.$axios.get('/api/train/trainInfo')
       .then((response) => {
         this.loadingShow = false;
         const data = response.data.resultBody;
@@ -188,10 +203,8 @@ export default {
           if(data[i].destCount==1){
             this.tableData.push({
               status: this.settingStatus(data[i].drivingStatus),
-              transporter_name: data[i].transporterName,
-              tp_code: data[i].tpCode,
               plate_no: data[i].plateNo,
-              // ti_no: data[i].tiNo,
+              ti_no: data[i].tiNo,
               departure_date: data[i].departureDate,
               departure: data[i].departureName,
               eta: data[i].eta,
@@ -203,9 +216,8 @@ export default {
             this.tableData.push({
               status: this.settingStatus(data[i].drivingStatus),
               transporter_name: data[i].transporterName,
-              tp_code: data[i].tpCode,
               plate_no: data[i].plateNo,
-              // ti_no: data[i].tiNo,
+              ti_no: data[i].tiNo,
               departure_date: data[i].departureDate,
               departure: data[i].departureName,
               eta: data[i].eta,
@@ -259,15 +271,15 @@ export default {
       }
       return this.status;
     },
-    getTrailerDetail(trailerInfo){
+    getTrainDetail(trainInfo){
       this.loadingShow = true;
-      this.$axios.get('/api/trailer/invoiceDetail', {
-          params: { plateNo: trailerInfo.plate_no, shippingId: trailerInfo.shippingId }
+      this.$axios.get('/api/train/invoiceDetail', {
+          params: { plateNo: trainInfo.plate_no, shippingId: trainInfo.shippingId }
       })
       .then((response) => {
         this.loadingShow = false;
-        this.trailerInfo = trailerInfo;
-        this.invoiceDetail = response.data.resultBody;
+        this.trainInfo = trainInfo;
+        // this.invoiceDetail = response.data.resultBody;
 
         if(this.invoiceDetail[0].goodsCode == 'V'){
           this.itmeNo = "VIN";
@@ -280,7 +292,7 @@ export default {
       }) 
     },
     setFilter(paramStatus){
-      this.$refs.trailerTable.setFilter({
+      this.$refs.trainTable.setFilter({
         status: paramStatus
       });
     },
@@ -294,4 +306,4 @@ export default {
   }
 };
 </script>
-<style src="./Trailer.scss" lang="scss" />
+<style src="./Train.scss" lang="scss" />

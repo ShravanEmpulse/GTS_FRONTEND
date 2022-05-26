@@ -9,7 +9,8 @@ import SupervisorDashboard from '@/pages/SupervisorDashboard/SupervisorDashboard
 // Maps
 import MapPage from '@/pages/Maps/Map/Map';
 import PlaybackPage from '@/pages/Maps/Playback/Playback';
-
+import RouteAnalysis from '@/pages/Maps/RouteAnalysis/RouteAnalysis';
+import RouteWeather from '@/pages/Routes/Weather/RouteWeather';
 //Genisys
 import GenisysMapPage from '@/pages/Genisys/GenisysMap/GenisysMap';
 import GenisysTrailerPage from '@/pages/Genisys/GenisysTrailer/GenisysTrailer';
@@ -22,6 +23,8 @@ import DomesticPlaybackPage from '@/pages/Domestic/DomesticPlayback/DomesticPlay
 
 // Trailer
 import TrailerPage from '@/pages/Trailer/Trailer';
+// Train
+import TrainPage from '@/pages/Train/Train';
 // Report
 import DeliveryDistanceReportPage from '@/pages/Report/DeliveryDistanceReport/DeliveryDistanceReport';
 import IdleReportPage from '@/pages/Report/IdleReport/IdleReport';
@@ -130,11 +133,22 @@ export default new Router({
                     name: 'RouteAnalysisPage',
                     component: RouteAnalysis,
                 },
+                {
+                    path: 'routes/weather',
+                    name: 'RouteWeatherPage',
+                    component: RouteWeather,
+                },
+
                 // Trailer
                 {
                     path: 'trailer',
                     name: 'TrailerPage',
                     component: TrailerPage,
+                },
+                {
+                    path: 'train',
+                    name: 'TrainPage',
+                    component: TrainPage,
                 },
                 // Genisys 
                 {
