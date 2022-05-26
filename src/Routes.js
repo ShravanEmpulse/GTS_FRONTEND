@@ -9,7 +9,8 @@ import SupervisorDashboard from '@/pages/SupervisorDashboard/SupervisorDashboard
 // Maps
 import MapPage from '@/pages/Maps/Map/Map';
 import PlaybackPage from '@/pages/Maps/Playback/Playback';
-
+import RouteAnalysis from '@/pages/Maps/RouteAnalysis/RouteAnalysis';
+import RouteWeather from '@/pages/Routes/Weather/RouteWeather';
 //Genisys
 import GenisysMapPage from '@/pages/Genisys/GenisysMap/GenisysMap';
 import GenisysTrailerPage from '@/pages/Genisys/GenisysTrailer/GenisysTrailer';
@@ -132,6 +133,12 @@ export default new Router({
                     name: 'RouteAnalysisPage',
                     component: RouteAnalysis,
                 },
+                {
+                    path: 'routes/weather',
+                    name: 'RouteWeatherPage',
+                    component: RouteWeather,
+                },
+
                 // Trailer
                 {
                     path: 'trailer',

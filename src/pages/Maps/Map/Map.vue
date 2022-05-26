@@ -22,6 +22,9 @@
                 </b-button>   
             </b-input-group-append>
         </b-col> 
+        <b-col>
+            
+        </b-col>
         <b-col lg="4" offset-lg="4">    
             <b-input-group class="map-search">    
                 <b-input-group-append>    

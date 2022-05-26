@@ -34,7 +34,10 @@
         <b-nav-item class="d-md-down-none" @click="navigate('/app/maps/map')">
           <i class="la la-globe px-2" />&nbsp;MAPS
         </b-nav-item>
-         <b-nav-item class="d-md-down-none" @click="navigate('/app/trailer')">
+        <b-nav-item class="d-md-down-none" @click="navigate('/app/routes/weather')">
+          <i class="la la-globe px-2" />&nbsp;ROUTES
+        </b-nav-item>
+        <b-nav-item class="d-md-down-none" @click="navigate('/app/trailer')">
           <i class="la la-subway px-2" />&nbsp;TRAILER
         </b-nav-item>
          <b-nav-item class="d-md-down-none" @click="navigate('/app/train')">
